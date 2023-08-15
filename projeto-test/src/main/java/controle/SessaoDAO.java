@@ -31,12 +31,24 @@ public class SessaoDAO {
 			// Executa nossa Query de Fato
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
+				// Pega o que o BD retornou
+				int idSessao = rs.getInt("idSessao");
+				String nomeSessao = rs.getString("nomeSessao");
 				
+				// Cria um Objeto organizadinho de Sessao
+				Sessao s = new Sessao();
+				s.setIdSessao(idSessao);
+				s.setNomeSessao(nomeSessao);
+				
+				// Adiciona Sessao na lista
+				sessoes.add(s);
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		c.fecharConexao();
 		
 		return sessoes;
 	}
