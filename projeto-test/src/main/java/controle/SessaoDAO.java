@@ -2,6 +2,7 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,11 +18,27 @@ public class SessaoDAO {
 		// Abiir a conexão com o Banco de Dados
 		Connection con = c.conectar();
 		
+		// Criando um Objeto de lista para guardar
+		// O que o banco trouxe
 		ArrayList<Sessao> sessoes = new ArrayList();
 		
-		String query = "";
+		String query = "SELECT * FROM sessao";
 		
-		return null;
+		try {
+			// Prepara nossa Query SQL acima em um Objeto Java
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			// Executa nossa Query de Fato
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return sessoes;
 	}
 	
 	public boolean inserir (Sessao s) {
@@ -48,7 +65,7 @@ public class SessaoDAO {
 			return true;
 			
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		return true;

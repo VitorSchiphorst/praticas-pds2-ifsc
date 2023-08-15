@@ -3,6 +3,6 @@ CREATE DATABASE  `filme`;
 USE `filme`;
 
 CREATE TABLE `sessao` (
-  `idSessao` int,
-  `nomeSessao` varchar(100)
+  `id_sessao` int,
+  `nome_essao` varchar(100)
 );
