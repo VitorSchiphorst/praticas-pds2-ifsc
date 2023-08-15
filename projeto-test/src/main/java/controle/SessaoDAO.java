@@ -3,10 +3,26 @@ package controle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.Sessao;
 
 public class SessaoDAO {
+	
+	public ArrayList<Sessao> listar() {
+		
+		// Instanciar a Classe
+		Conexao c = Conexao.getInstancia();
+				
+		// Abiir a conexão com o Banco de Dados
+		Connection con = c.conectar();
+		
+		ArrayList<Sessao> sessoes = new ArrayList();
+		
+		String query = "";
+		
+		return null;
+	}
 	
 	public boolean inserir (Sessao s) {
 		
