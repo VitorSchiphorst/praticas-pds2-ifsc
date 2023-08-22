@@ -82,4 +82,53 @@ public class SessaoDAO {
 		
 		return true;
 	}
+	
+	public boolean excluir(Sessao s) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+		
+		String query = "DELETE FROM sessao WHERE id_sessao = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, s.getIdSessao());
+			ps.executeUpdate();
+			
+			// Fecha a Conexão com o Banco
+			c.fecharConexao();
+			
+			return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public boolean atualizar(Sessao s) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+		
+		String query = "UPDATE sessao SET nome_sessao = ? WHERE id_sessao = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, s.getNomeSessao());
+			ps.setInt(2, s.getIdSessao());
+			ps.executeUpdate();
+			
+			// Fecha a Conexão com o Banco
+			c.fecharConexao();
+			
+			return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	
 }

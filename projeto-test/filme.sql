@@ -4,5 +4,5 @@ USE `filme`;
 
 CREATE TABLE `sessao` (
   `id_sessao` int,
-  `nome_essao` varchar(100)
+  `nome_sessao` varchar(100)
 );
