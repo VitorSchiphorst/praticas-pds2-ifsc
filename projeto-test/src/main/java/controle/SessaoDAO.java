@@ -83,7 +83,7 @@ public class SessaoDAO {
 		return true;
 	}
 	
-	public boolean excluir(Sessao s) {
+	public boolean excluir(Integer id) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 		
@@ -91,7 +91,7 @@ public class SessaoDAO {
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, s.getIdSessao());
+			ps.setInt(1, id);
 			ps.executeUpdate();
 			
 			// Fecha a Conexão com o Banco
@@ -106,7 +106,7 @@ public class SessaoDAO {
 		return false;
 	}
 	
-	public boolean atualizar(Sessao s) {
+	public boolean atualizar(Integer id, String nome) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 		
@@ -114,8 +114,8 @@ public class SessaoDAO {
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, s.getNomeSessao());
-			ps.setInt(2, s.getIdSessao());
+			ps.setString(1, nome);
+			ps.setInt(2, id);
 			ps.executeUpdate();
 			
 			// Fecha a Conexão com o Banco
